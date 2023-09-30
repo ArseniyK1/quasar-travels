@@ -1,7 +1,8 @@
 <template>
   <q-layout view="hHh lpR fFf">
-    <q-page-container>
-      <IndexPage />
+    <q-page-container class="index">
+      <my-filters />
+      <router-view />
     </q-page-container>
   </q-layout>
 </template>
@@ -9,10 +10,11 @@
 <script>
 import { ref } from "vue";
 
-import IndexPage from "pages/IndexPage.vue";
 import { useTravelStore } from "src/stores/TravelStore"; // Импортируйте ваш стор
+import MyFilters from "src/components/MyFilters.vue";
 
 export default {
+  components: { MyFilters },
   setup() {
     const leftDrawerOpen = ref(false);
     const travelStore = useTravelStore(); // Инициализируйте ваш стор
@@ -22,10 +24,14 @@ export default {
       travelStore,
     };
   },
-  components: {
-    IndexPage,
-  },
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.index {
+  width: 100vw;
+  height: 100vh;
+  background: #363636;
+  display: flex;
+}
+</style>

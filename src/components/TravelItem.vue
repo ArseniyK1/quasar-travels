@@ -21,17 +21,16 @@
     <q-card-actions>
       <q-btn flat>отбытие {{ travel.time_departure }} </q-btn>
       <q-btn flat>прибытие {{ travel.time_arrival }} </q-btn>
-      <q-btn flat color="primary" @click="travelStore.showDetailsDialog = true"
-        >Подробнее</q-btn
+      <q-btn flat color="primary"
+        ><router-link :to="'/' + travel.travel_id" class="link"
+          >Подробнее</router-link
+        ></q-btn
       >
     </q-card-actions>
   </q-card>
 </template>
 
 <script setup>
-import { useTravelStore } from "src/stores/TravelStore";
-
-const travelStore = useTravelStore();
 const props = defineProps({
   travel: {
     type: Object,
@@ -40,14 +39,17 @@ const props = defineProps({
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .my-card {
   width: 30rem;
+  height: 50%;
   margin: 10px;
-}
-
-.img {
-  width: 25rem;
-  height: 15rem;
+  .img {
+    width: 25rem;
+    height: 15rem;
+  }
+  .link {
+    text-decoration: none;
+  }
 }
 </style>

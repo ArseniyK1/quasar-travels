@@ -70,7 +70,6 @@ export const useTravelStore = defineStore("travelStore", {
       },
     ],
     sortTrav: [],
-    showDetailsDialog: false,
   }),
   getters: {},
   actions: {

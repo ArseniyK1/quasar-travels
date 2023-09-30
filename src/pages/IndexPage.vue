@@ -1,6 +1,6 @@
 <template>
-  <q-page class="flex index">
-    <MyFilters />
+  <q-page class="main">
+    <!-- <MyFilters /> -->
     <TravelList />
   </q-page>
 </template>
@@ -19,10 +19,8 @@ export default defineComponent({
 });
 </script>
 
-<style>
-.index {
-  width: 100vw;
-  height: 100vh;
-  background: #363636;
+<style scoped>
+.main {
+  width: 100%;
 }
 </style>

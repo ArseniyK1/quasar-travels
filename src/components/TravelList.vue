@@ -1,5 +1,5 @@
 <template>
-  <div class="list">
+  <div class="list styled-scrollbars">
     <travel-item
       v-for="travel of filteredTravels"
       :key="travel.travel_id"
@@ -12,7 +12,6 @@
 import { computed } from "vue";
 import TravelItem from "./TravelItem.vue";
 import { useTravelStore } from "src/stores/TravelStore";
-
 export default {
   components: {
     TravelItem,
@@ -36,10 +35,24 @@ export default {
 
 <style scoped>
 .list {
-  width: 80%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
   overflow: auto;
+}
+
+.styled-scrollbars {
+  scrollbar-color: #fff #000;
+}
+.styled-scrollbars::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.styled-scrollbars::-webkit-scrollbar-thumb {
+  background: #999;
+}
+.styled-scrollbars::-webkit-scrollbar-track {
+  background: #333;
 }
 </style>
