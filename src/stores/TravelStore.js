@@ -74,8 +74,7 @@ export const useTravelStore = defineStore("travelStore", {
   getters: {},
   actions: {
     sortTravels: function (sort) {
-      // Обратите внимание на использование function
-      let sortArr = [...this.travels]; // Используйте this для доступа к состоянию
+      let sortArr = [...this.travels];
       if (sort) {
         if (sort === "cityAscending") {
           sortArr.sort((a, b) => a.ticket_cost - b.ticket_cost);
@@ -88,9 +87,15 @@ export const useTravelStore = defineStore("travelStore", {
             travel.train_wagon_types.includes(sort)
           );
         }
+        if (sort === "travelAscending") {
+          sortArr.sort((a, b) => a.travel_time - b.travel_time);
+        }
+        if (sort === "travelDescending") {
+          sortArr.sort((a, b) => b.travel_time - a.travel_time);
+        }
 
         if (sortArr.length > 0) {
-          this.sortTrav = sortArr; // Используйте this для установки состояния
+          this.sortTrav = sortArr;
         } else {
           this.sortTrav = [];
         }

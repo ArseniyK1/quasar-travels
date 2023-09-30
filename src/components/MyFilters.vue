@@ -40,7 +40,7 @@
           transition-hide="scale"
           v-model="filterTime"
           :options="travel_times"
-          label="Время"
+          label="Время в пути"
           class="q-selecet text-white"
           @update:model-value="handleFilterChange()"
           dark
@@ -61,7 +61,6 @@ export default {
     const filterComfort = ref(null);
     const filterTime = ref(null);
 
-    // Функция для вызова обработчика из стора при изменении фильтра
     const handleFilterChange = (value) => {
       console.log(value);
       if (filterCity.value === "По возрастанию") {
@@ -73,10 +72,12 @@ export default {
       if (filterComfort.value) {
         travelStore.sortTravels(filterComfort.value);
       }
-      // else if (selectedFilter.value === "trainNameDown") {
-      //   travelStore.filtersTravelsTrainNameDown();
-      // }
-      // Обновите список поездов в TravelList, если необходимо
+      if (filterTime.value === "По возрастанию") {
+        travelStore.sortTravels("travelAscending");
+      }
+      if (filterTime.value === "По убыванию") {
+        travelStore.sortTravels("travelDescending");
+      }
     };
 
     const citys = ["По возрастанию", "По убыванию"];

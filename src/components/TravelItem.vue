@@ -7,7 +7,9 @@
           {{ travel.city_arrival }}
         </div>
 
-        <div class="text-h5 q-mt-sm q-mb-xs">{{ travel.train_name }}</div>
+        <div class="text-h5 q-mt-sm q-mb-xs">
+          {{ travel.train_name }} ({{ travel.train_wagon_types }})
+        </div>
       </q-card-section>
 
       <q-card-section class="col-5 flex flex-center">

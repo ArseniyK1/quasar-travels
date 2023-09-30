@@ -10,14 +10,14 @@
 <script>
 import { ref } from "vue";
 
-import { useTravelStore } from "src/stores/TravelStore"; // Импортируйте ваш стор
+import { useTravelStore } from "src/stores/TravelStore";
 import MyFilters from "src/components/MyFilters.vue";
 
 export default {
   components: { MyFilters },
   setup() {
     const leftDrawerOpen = ref(false);
-    const travelStore = useTravelStore(); // Инициализируйте ваш стор
+    const travelStore = useTravelStore();
 
     return {
       leftDrawerOpen,

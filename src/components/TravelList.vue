@@ -19,7 +19,6 @@ export default {
   setup() {
     const travelStore = useTravelStore();
 
-    // Вычисляемое свойство для получения отфильтрованных данных из стора
     const filteredTravels = computed(() => {
       return travelStore.sortTrav.length > 0
         ? travelStore.sortTrav

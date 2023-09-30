@@ -20,17 +20,26 @@
           <div class="text-h5 q-mt-sm q-mb-xs">
             {{ travel_obj[0].train_name }}
           </div>
-          <div class="text-caption text-grey">
+          <div class="text-subtitle1">
             Подробная информация о поезде:
-            <p>
+            <p class="text-caption text-grey">
               Стоимость билета на данный рейс: {{ travel_obj[0].ticket_cost }}
             </p>
-            <p>
+            <p class="text-caption text-grey">
               Количество доступных билетов: {{ travel_obj[0].ticket_count }}
             </p>
-            <p>Время отправления: {{ travel_obj[0].time_departure }}</p>
-            <p>Время прибытия: {{ travel_obj[0].time_arrival }}</p>
-            <p>Вид вагонов: {{ travel_obj[0].train_wagon_types }}</p>
+            <p class="text-caption text-grey">
+              Время отправления: {{ travel_obj[0].time_departure }}
+            </p>
+            <p class="text-caption text-grey">
+              Время прибытия: {{ travel_obj[0].time_arrival }}
+            </p>
+            <p class="text-caption text-grey">
+              Время в пути: {{ travel_obj[0].travel_time }}
+            </p>
+            <p class="text-caption text-grey">
+              Вид вагонов: {{ travel_obj[0].train_wagon_types }}
+            </p>
           </div>
         </q-card-section>
       </q-card>
@@ -60,7 +69,6 @@ export default {
     },
   },
   created() {
-    // Используйте $route.params.travelId для получения значения параметра travelId
     this.travelId = this.$route.params.travelId;
     this.findOneTravel();
   },
