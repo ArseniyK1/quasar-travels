@@ -26,9 +26,6 @@
               Стоимость билета на данный рейс: {{ travel_obj[0].ticket_cost }}
             </p>
             <p class="text-caption text-grey">
-              Количество доступных билетов: {{ travel_obj[0].ticket_count }}
-            </p>
-            <p class="text-caption text-grey">
               Время отправления: {{ travel_obj[0].time_departure }}
             </p>
             <p class="text-caption text-grey">
@@ -44,11 +41,14 @@
           <q-btn
             class="buy-ticket"
             color="primary"
-            v-if="buy_ticket"
+            v-if="buy_ticket && this.travel_obj[0].ticket_count > 0"
             @click="buyTicket"
             >Купить билет</q-btn
           >
           <div class="buy-ticket" v-else>Билет куплен!</div>
+          <p class="text-caption">
+            Количество доступных билетов: {{ travel_obj[0].ticket_count }}
+          </p>
         </q-card-section>
       </q-card>
     </div>
@@ -74,7 +74,9 @@ export default {
       );
     },
     buyTicket() {
-      this.travel_obj[0].ticket_count--;
+      if (this.travel_obj[0].ticket_count > 0) {
+        this.travel_obj[0].ticket_count--;
+      }
       this.buy_ticket = false;
     },
     goBack() {
