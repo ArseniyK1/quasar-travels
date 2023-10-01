@@ -41,6 +41,12 @@
               Вид вагонов: {{ travel_obj[0].train_wagon_types }}
             </p>
           </div>
+          <q-btn
+            class="buy-ticket"
+            color="primary"
+            @click="travel_obj[0].ticket_count--"
+            >Купить билет</q-btn
+          >
         </q-card-section>
       </q-card>
     </div>
@@ -88,7 +94,13 @@ export default {
   width: 100%;
   // border: 1px solid red;
   .my-card {
-    width: 50%;
+    width: 45%;
+    position: relative;
+    .buy-ticket {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
   }
 }
 </style>

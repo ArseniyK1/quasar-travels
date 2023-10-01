@@ -23,9 +23,10 @@
     <q-card-actions>
       <q-btn flat>отбытие {{ travel.time_departure }} </q-btn>
       <q-btn flat>прибытие {{ travel.time_arrival }} </q-btn>
+
       <q-btn flat color="primary"
         ><router-link :to="'/' + travel.travel_id" class="link"
-          >Подробнее</router-link
+          ><q-icon name="open_in_new" />Подробнее</router-link
         ></q-btn
       >
     </q-card-actions>
