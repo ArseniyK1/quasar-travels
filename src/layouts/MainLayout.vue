@@ -14,6 +14,10 @@ import { useTravelStore } from "src/stores/TravelStore";
 import MyFilters from "src/components/MyFilters.vue";
 
 export default {
+  beforeRouteUpdate(to, from, next) {
+    document.title = to.meta.title || "";
+    next();
+  },
   components: { MyFilters },
   setup() {
     const leftDrawerOpen = ref(false);

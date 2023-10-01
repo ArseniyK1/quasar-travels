@@ -20,8 +20,8 @@ export default {
     const travelStore = useTravelStore();
 
     const filteredTravels = computed(() => {
-      return travelStore.sortTrav.length > 0
-        ? travelStore.sortTrav
+      return travelStore.sortTravelArray.length > 0
+        ? travelStore.sortTravelArray
         : travelStore.travels;
     });
 

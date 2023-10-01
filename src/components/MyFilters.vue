@@ -8,10 +8,10 @@
         <q-select
           rounded
           outlined
-          v-model="filterCity"
+          v-model="filterTicket"
           transition-show="scale"
           transition-hide="scale"
-          :options="citys"
+          :options="costs"
           label="Цена"
           class="q-selecet filled"
           @update:model-value="handleFilterChange()"
@@ -65,16 +65,16 @@ const { sortTravels } = travelStore;
 
 export default {
   setup() {
-    const filterCity = ref(null);
+    const filterTicket = ref(null);
     const filterComfort = ref(null);
     const filterTime = ref(null);
 
     const handleFilterChange = (reset) => {
-      if (filterCity.value === "По возрастанию") {
-        sortTravels("cityAscending");
+      if (filterTicket.value === "По возрастанию") {
+        sortTravels("ticketAscending");
       }
-      if (filterCity.value === "По убыванию") {
-        sortTravels("cityDescending");
+      if (filterTicket.value === "По убыванию") {
+        sortTravels("ticketDescending");
       }
       if (filterComfort.value) {
         sortTravels(filterComfort.value);
@@ -86,23 +86,23 @@ export default {
         sortTravels("travelDescending");
       }
       if (reset === "reset") {
-        filterCity.value = "";
+        filterTicket.value = "";
         filterComfort.value = "";
         filterTime.value = "";
         sortTravels("reset");
       }
     };
 
-    const citys = ["По возрастанию", "По убыванию"];
+    const costs = ["По возрастанию", "По убыванию"];
     const wagon_types = ["купе", "плацкарт", "сидячий"];
-    const travel_times = ["По возрастанию", "По убыванию"];
+    const travel_times = [...costs];
 
     return {
-      filterCity,
+      filterTicket,
       filterComfort,
       filterTime,
       handleFilterChange,
-      citys,
+      costs,
       wagon_types,
       travel_times,
     };

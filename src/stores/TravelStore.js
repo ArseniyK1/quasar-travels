@@ -69,18 +69,19 @@ export const useTravelStore = defineStore("travelStore", {
         train_img: "src/assets/sapsan.jpg",
       },
     ],
-    sortTrav: [],
+    sortTravelArray: [],
   }),
   getters: {},
   actions: {
     sortTravels: function (sort) {
       let sortArr = [...this.travels];
       if (sort) {
-        if (sort === "cityAscending") {
-          sortArr.sort((a, b) => a.ticket_cost - b.ticket_cost);
+        console.log("sort");
+        if (sort === "ticketAscending") {
+          sortArr = sortArr.sort((a, b) => a.ticket_cost - b.ticket_cost);
         }
-        if (sort === "cityDescending") {
-          sortArr.sort((a, b) => b.ticket_cost - a.ticket_cost);
+        if (sort === "ticketDescending") {
+          sortArr = sortArr.sort((a, b) => b.ticket_cost - a.ticket_cost);
         }
         if (sort === "купе" || sort === "плацкарт" || sort === "сидячий") {
           sortArr = sortArr.filter((travel) =>
@@ -88,21 +89,19 @@ export const useTravelStore = defineStore("travelStore", {
           );
         }
         if (sort === "travelAscending") {
-          sortArr.sort((a, b) => a.travel_time - b.travel_time);
+          sortArr = sortArr.sort((a, b) => a.travel_time - b.travel_time);
         }
         if (sort === "travelDescending") {
-          sortArr.sort((a, b) => b.travel_time - a.travel_time);
+          sortArr = sortArr.sort((a, b) => b.travel_time - a.travel_time);
         }
         if (sort === "reset") {
-          console.log("reset");
-
-          this.sortTrav = this.travels;
+          this.sortTravelArray = this.travels;
         }
 
         if (sortArr.length > 0) {
-          this.sortTrav = sortArr;
+          this.sortTravelArray = sortArr;
         } else {
-          this.sortTrav = [];
+          this.sortTravelArray = [];
         }
       }
     },
