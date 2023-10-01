@@ -93,6 +93,11 @@ export const useTravelStore = defineStore("travelStore", {
         if (sort === "travelDescending") {
           sortArr.sort((a, b) => b.travel_time - a.travel_time);
         }
+        if (sort === "reset") {
+          console.log("reset");
+
+          this.sortTrav = this.travels;
+        }
 
         if (sortArr.length > 0) {
           this.sortTrav = sortArr;

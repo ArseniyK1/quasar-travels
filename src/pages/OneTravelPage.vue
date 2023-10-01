@@ -44,9 +44,11 @@
           <q-btn
             class="buy-ticket"
             color="primary"
-            @click="travel_obj[0].ticket_count--"
+            v-if="buy_ticket"
+            @click="buyTicket"
             >Купить билет</q-btn
           >
+          <div class="buy-ticket" v-else>Билет куплен!</div>
         </q-card-section>
       </q-card>
     </div>
@@ -62,6 +64,7 @@ export default {
     return {
       travelId: null,
       travel_obj: null,
+      buy_ticket: true,
     };
   },
   methods: {
@@ -69,6 +72,10 @@ export default {
       this.travel_obj = travelStore.travels.filter(
         (travel) => travel.travel_id === +this.travelId
       );
+    },
+    buyTicket() {
+      this.travel_obj[0].ticket_count--;
+      this.buy_ticket = false;
     },
     goBack() {
       this.$router.go(-1);

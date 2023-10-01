@@ -46,6 +46,13 @@
           dark
         />
       </div>
+      <q-btn
+        rounded
+        label="Сбросить"
+        color="primary"
+        class="q-mt-xs"
+        @click="handleFilterChange('reset')"
+      />
     </div>
   </div>
 </template>
@@ -53,30 +60,36 @@
 <script>
 import { ref } from "vue";
 import { useTravelStore } from "src/stores/TravelStore";
+const travelStore = useTravelStore();
+const { sortTravels } = travelStore;
 
 export default {
   setup() {
-    const travelStore = useTravelStore();
     const filterCity = ref(null);
     const filterComfort = ref(null);
     const filterTime = ref(null);
 
-    const handleFilterChange = (value) => {
-      console.log(value);
+    const handleFilterChange = (reset) => {
       if (filterCity.value === "По возрастанию") {
-        travelStore.sortTravels("cityAscending");
+        sortTravels("cityAscending");
       }
       if (filterCity.value === "По убыванию") {
-        travelStore.sortTravels("cityDescending");
+        sortTravels("cityDescending");
       }
       if (filterComfort.value) {
-        travelStore.sortTravels(filterComfort.value);
+        sortTravels(filterComfort.value);
       }
       if (filterTime.value === "По возрастанию") {
-        travelStore.sortTravels("travelAscending");
+        sortTravels("travelAscending");
       }
       if (filterTime.value === "По убыванию") {
-        travelStore.sortTravels("travelDescending");
+        sortTravels("travelDescending");
+      }
+      if (reset === "reset") {
+        filterCity.value = "";
+        filterComfort.value = "";
+        filterTime.value = "";
+        sortTravels("reset");
       }
     };
 
