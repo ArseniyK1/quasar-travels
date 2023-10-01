@@ -45,7 +45,10 @@
             @click="buyTicket"
             >Купить билет</q-btn
           >
-          <div class="asd" v-else-if="this.travel_obj[0].ticket_count === 0">
+          <div
+            class="text-uppercase"
+            v-else-if="this.travel_obj[0].ticket_count === 0"
+          >
             Нет доступных билетов <q-icon name="sentiment_dissatisfied" />
           </div>
           <div class="buy-ticket" v-else>Билет куплен!</div>

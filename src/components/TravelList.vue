@@ -54,4 +54,10 @@ export default {
 .styled-scrollbars::-webkit-scrollbar-track {
   background: #333;
 }
+@media (max-width: 1811px) {
+  .list div {
+    text-align: center;
+    margin: 15px auto;
+  }
+}
 </style>

@@ -55,9 +55,4 @@ const props = defineProps({
     text-decoration: none;
   }
 }
-@media (max-width: 1881px) {
-  .my-card {
-    width: 40rem;
-  }
-}
 </style>
