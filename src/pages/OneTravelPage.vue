@@ -41,10 +41,13 @@
           <q-btn
             class="buy-ticket"
             color="primary"
-            v-if="buy_ticket && this.travel_obj[0].ticket_count > 0"
+            v-if="buy_ticket"
             @click="buyTicket"
             >Купить билет</q-btn
           >
+          <div class="asd" v-else-if="this.travel_obj[0].ticket_count === 0">
+            Нет доступных билетов <q-icon name="sentiment_dissatisfied" />
+          </div>
           <div class="buy-ticket" v-else>Билет куплен!</div>
           <p class="text-caption">
             Количество доступных билетов: {{ travel_obj[0].ticket_count }}

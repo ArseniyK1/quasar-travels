@@ -24,7 +24,7 @@ export const useTravelStore = defineStore("travelStore", {
         city_departure: "Саратов",
         city_arrival: "Пермь",
         ticket_cost: 1200,
-        ticket_count: 1,
+        ticket_count: 0,
         train_name: "Рассвет",
         train_wagon_types: "сидячий",
         train_img: "src/assets/rassvet.jpg",

@@ -21,8 +21,8 @@
     <q-separator inset />
 
     <q-card-actions>
-      <q-btn flat>отбытие {{ travel.time_departure }} </q-btn>
-      <q-btn flat>прибытие {{ travel.time_arrival }} </q-btn>
+      <q-btn color="primary">отбытие {{ travel.time_departure }} </q-btn>
+      <q-btn color="primary">прибытие {{ travel.time_arrival }} </q-btn>
 
       <q-btn flat color="primary"
         ><router-link :to="'/' + travel.travel_id" class="link"
