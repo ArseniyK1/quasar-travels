@@ -61,7 +61,7 @@
 import { ref } from "vue";
 import { useTravelStore } from "src/stores/TravelStore";
 const travelStore = useTravelStore();
-const { sortTravels } = travelStore;
+const { sortTravels, setFilters } = travelStore;
 
 export default {
   setup() {
@@ -72,9 +72,11 @@ export default {
     const handleFilterChange = (reset) => {
       if (filterTicket.value === "По возрастанию") {
         sortTravels("ticketAscending");
+        setFilters(filterTicket.value);
       }
       if (filterTicket.value === "По убыванию") {
         sortTravels("ticketDescending");
+        setFilters(filterTicket.value);
       }
       if (filterComfort.value) {
         sortTravels(filterComfort.value);

@@ -2,7 +2,7 @@
   <div class="list styled-scrollbars">
     <travel-item
       v-for="travel of filteredTravels"
-      :key="travel.travel_id"
+      :key="travel.id"
       :travel="travel"
     />
   </div>
@@ -12,13 +12,13 @@
 import { computed } from "vue";
 import TravelItem from "./TravelItem.vue";
 import { useTravelStore } from "src/stores/TravelStore";
+import { api } from "boot/axios";
+const travelStore = useTravelStore();
 export default {
   components: {
     TravelItem,
   },
   setup() {
-    const travelStore = useTravelStore();
-
     const filteredTravels = computed(() => {
       return travelStore.sortTravelArray.length > 0
         ? travelStore.sortTravelArray
@@ -29,10 +29,24 @@ export default {
       filteredTravels,
     };
   },
+  methods: {
+    async fetchAllTravels() {
+      try {
+        const res = await api.get("http://localhost:5000/api/travel");
+
+        travelStore.travels = res.data;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
+  created() {
+    this.fetchAllTravels();
+  },
 };
 </script>
 
-<style scoped>
+<style>
 .list {
   width: 100%;
   height: 100%;
